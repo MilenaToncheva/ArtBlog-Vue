@@ -24,6 +24,7 @@ export default {
 <style >
 .err{
   color:red
+  
 }
 </style>
 
