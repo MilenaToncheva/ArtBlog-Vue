@@ -1,7 +1,7 @@
 <template>
   <div id="app">
    <app-header></app-header>
-
+<router-view></router-view>
    <app-footer></app-footer>
   </div>
 </template>
@@ -12,14 +12,18 @@ import AppFooter from './components/core/Footer.vue';
 
 export default {
   name: 'App',
+  
   components: {
     AppHeader,
     AppFooter
+    
   }
 }
 </script>
 
-<style scoped>
-
+<style >
+.err{
+  color:red
+}
 </style>
 
