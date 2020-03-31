@@ -21,10 +21,10 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link black-text" to="#">My Articles</router-link>
+        <router-link class="nav-link black-text" to="/my-articles">My Articles</router-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link black-text" href="#">Create Article</a>
+        <router-link class="nav-link black-text" to="/articles/create">Create Article</router-link>
       </li>
     </ul>
       
@@ -42,7 +42,7 @@
                <p class="nav-link waves-light black-text"  >Welcome, MMMMM </p>
             </li>
             <li class="nav-item"  v-if="isAuthenticated">
-           <router-link to="#" class="nav-link waves-light black-text" mdbWavesEffect>Logout</router-link>
+           <router-link to="/" class="nav-link waves-light black-text" mdbWavesEffect>Logout</router-link>
             </li>
          
          
@@ -58,7 +58,7 @@ export default {
 name:'AppHeader',
 data(){
     return {
-        isAuthenticated:false
+        isAuthenticated:true
     }
 
 },

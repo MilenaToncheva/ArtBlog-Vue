@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app"  >
    <app-header></app-header>
-<router-view></router-view>
+  <router-view  v-bind:image="image"></router-view>
    <app-footer></app-footer>
   </div>
 </template>
@@ -17,6 +17,15 @@ export default {
     AppHeader,
     AppFooter
     
+  },
+  data(){
+    return{
+    image:{
+      backgroundImage:"url(https://images.pexels.com/photos/3057821/pexels-photo-3057821.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)",
+      },
+    articles:null
+    }
+  
   }
 }
 </script>
@@ -24,7 +33,10 @@ export default {
 <style >
 .err{
   color:red
-  
 }
+form{
+    background-color:white;
+}
+
 </style>
 

@@ -13,7 +13,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 Vue.config.productionTip = false;
 Vue.use(Vuelidate);
-
+Vue.filter('shorten',function(value){
+  return value.substr(0,10);
+})
 for(const component in mdbvue){
   Vue.component(component,mdbvue[component]);
 }

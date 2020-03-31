@@ -19,11 +19,14 @@
    <input v-model="rePassword"  name="rePassword" type="password" id="defaultRegisterFormRePassword" class="form-control" 
     placeholder="Repeat password" aria-describedby="defaultRegisterFormPasswordHelpBlock" v-on:blur="$v.rePassword.$touch()"  >
      <template v-if="$v.rePassword.$error">
-    <div v-if="!$v.rePassword.sameAs" class="err">Both passwords don't match!</div>
+          <div v-if="!$v.rePassword.required" class="err">Repeat password is required!</div>
+    <div v-else-if="!$v.rePassword.sameAs" class="err">Both passwords don't match!</div>
      </template>
 <!-- Button -->
     <div class="text-center col-md-12 " >
-      <button v-bind:disabled="$v.$invalid" mdbBtn color="info" block="true" class="my-4" type="submit">Register</button>
+     
+       <button v-bind:disabled="$v.$invalid" class="btn btn-info btn-block my-4" type="submit">Register</button>
+
     </div>
 <!-- link to Login -->    
     <p>
@@ -68,5 +71,8 @@ validations:{
 </script>
 
 <style>
-
+form{
+    background-color:white;
+    
+}
 </style>

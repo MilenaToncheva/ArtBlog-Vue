@@ -5,12 +5,15 @@ import AppRegister from '@/components/auth/Register.vue';
 import AppLogin from '@/components/auth/Login.vue';
 import AppArticlesAll from '@/components/article/ArticlesAll.vue'; 
 import AppStart from '@/components/Start.vue';
+import AppNotFound from '@/components/NotFound.vue';
 
 const routes=[
     {path:'/users/register',component:AppRegister},
     {path:'/users/login', component:AppLogin},
    {path:'/articles/all', component:AppArticlesAll},
-  { path:'/', component:AppStart}
+   {path:'/home', component:AppArticlesAll},
+  { path:'/', component:AppStart},
+  {path:'**',component:AppNotFound}
 ]
 
 Vue.use(VueRouter);

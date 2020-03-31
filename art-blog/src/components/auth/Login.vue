@@ -16,7 +16,7 @@
    </template>
     </div>
    <div class="text-center col-md-12 " >
-    <button v-bind:disabled="$v.invalid" color="info" block="true" class="my-4" type="submit">Login</button>
+     <button v-bind:disabled="$v.$invalid" class="btn btn-info btn-block my-4" type="submit">Login</button>
    </div>
    
     <p>Not a member?
@@ -57,5 +57,7 @@ password:''
 </script>
 
 <style>
-
+form{
+    background-color:white;
+}
 </style>
