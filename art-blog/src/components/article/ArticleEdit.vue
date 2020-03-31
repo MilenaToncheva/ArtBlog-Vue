@@ -1,5 +1,5 @@
 <template>
-  
+  <div>Article Edit</div>
 </template>
 
 <script>

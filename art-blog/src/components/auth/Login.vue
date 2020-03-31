@@ -39,7 +39,8 @@ password:''
     },
     methods:{
         loginHandler(){
-
+            this.$v.$touch();
+//todo
         }
     },
     validations:{

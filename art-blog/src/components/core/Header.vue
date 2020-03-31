@@ -21,7 +21,7 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link black-text" to="/my-articles">My Articles</router-link>
+        <router-link class="nav-link black-text" to="/articles/my-articles">My Articles</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link black-text" to="/articles/create">Create Article</router-link>
