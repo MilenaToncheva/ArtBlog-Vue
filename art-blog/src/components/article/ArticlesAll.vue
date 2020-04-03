@@ -30,7 +30,8 @@
         <!-- Excerpt -->
     <p class="dark-grey-text">{{article.content|shorten}}</p>
         <!-- Read more button -->
-    <router-link  mdbBtn color="pink" rounded="true" mdbWavesEffect to="/articles/details/:article.id">Read more</router-link>
+    <router-link  mdbBtn color="pink" rounded="true"
+     mdbWavesEffect v-bind:to="{name:'articleDetails', params:{id:article.id}}">Read more</router-link>
   
       </div>
       <!-- Grid column -->
@@ -45,18 +46,24 @@
 </template>
 
 <script>
+import ArticlesMixin from '@/mixins/articles-mixin.js';
 
 export default {
 name:'AppArticlesAll',
-components:{},
-props:{
-    articles:{
-        type:Array
-    }
+
+
+   created(){
+this.getAllArticles();
+   },
+    
+    mixins:[ArticlesMixin]
 }
-}
+
 </script>
 
-<style>
-
+<style scoped>
+div img{
+    width: 350px;
+    height:240px; 
+}
 </style>

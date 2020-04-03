@@ -18,26 +18,23 @@ export default {
 name:'AppStart',
 data(){
   return{
-   
-  
+   image:{
+      backgroundImage:"url(https://images.pexels.com/photos/3057821/pexels-photo-3057821.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)",
+      }
 
    }
   },
-  props:{
-    image:{
-      type:Object,
-      required:true
-    }
+ 
   }
-}
+
 
 </script>
 
 <style scoped>
 #startView{
-  height: 648px;
+  height: 600px;
 filter: brightness(1.14) ; }
 .background-image{
-  height: 646px
+  height: 640px
 }
 </style>

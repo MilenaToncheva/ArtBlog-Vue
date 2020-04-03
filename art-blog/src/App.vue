@@ -1,7 +1,7 @@
 <template>
   <div id="app"  >
-   <app-header></app-header>
-  <router-view  v-bind:image="image"></router-view>
+   <app-header v-on:onAuth="isAuthenticated=$event" v-bind:isAuthenticated="isAuthenticated" v-bind:email="email"></app-header>
+  <router-view   v-on:onAuth="isAuthenticated=$event" v-bind:isAuthenticated="isAuthenticated"  ></router-view>
    <app-footer></app-footer>
   </div>
 </template>
@@ -12,22 +12,38 @@ import AppFooter from './components/core/Footer.vue';
 
 export default {
   name: 'App',
-  
+   data:function(){
+     return{
+       isAuthenticated:localStorage.getItem('token')!==null,
+       email:localStorage.getItem('email')
+       
+     }  
+   },
+
   components: {
     AppHeader,
     AppFooter
     
   },
-  data(){
-    return{
-    image:{
-      backgroundImage:"url(https://images.pexels.com/photos/3057821/pexels-photo-3057821.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)",
-      },
-    articles:null
-    }
   
+ 
+methods:{
+  addArticle(article){
+    //todo and replace
+    this.articles.push(article);
   }
+  },
+  computed:{     
+    
+    selectedArticle(id){
+return this.articles.filter(a=>a.id===id);
+    }
+
+  }
+  
+  
 }
+
 </script>
 
 <style >

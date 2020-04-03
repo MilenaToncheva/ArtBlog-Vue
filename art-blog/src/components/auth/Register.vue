@@ -1,5 +1,5 @@
 <template>
-  <form class="text-center col-md-4 offset-4 border border-light p-5"  v-on:submit.prevent="registerHandle">
+  <form class="text-center col-md-4 offset-4 border border-light p-5"  v-on:submit.prevent="registerHandler">
     <p class="h4 mb-4">Register</p>
 <!-- EMAIL -->
     <input v-model="email" name="email"  type="email" id="defaultRegisterFormEmail" class="form-control mb-4" 
@@ -35,7 +35,11 @@
 </form>
 </template>
 
+
+
 <script>
+
+import authAxios from "@/axios-auth.js";
 import {validationMixin} from 'vuelidate';
 import {email, sameAs, required, minLength}from 'vuelidate/lib/validators';
 export default {
@@ -43,14 +47,32 @@ name:'AppRegister',
 mixins:[validationMixin],   
 data(){
     return{
-email:'',
-password:'',
-rePassword:''
+        email:'',
+        password:'',
+        rePassword:''
     }
 },
 methods:{
     registerHandler(){
-this.$v.$touch();
+        this.$v.$touch();
+        const payload={
+            email:this.email,
+            password:this.password,
+            returnSecureToken:true
+        };
+
+        authAxios
+            .post(
+                "/accounts:signUp",
+                payload
+                )
+            .then(()=>{
+                this.$router.push('/users/login');
+            })
+            .catch(err=>{
+                console.error(err);
+            })
+
     }
 },
 validations:{

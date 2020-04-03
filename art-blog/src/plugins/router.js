@@ -8,6 +8,8 @@ import AppArticlesMine from '@/components/article/ArticlesMine.vue';
 import AppArticleCreate from '@/components/article/ArticleCreate.vue';
 import AppStart from '@/components/Start.vue';
 import AppNotFound from '@/components/NotFound.vue';
+import AppArticleEdit from '@/components/article/ArticleEdit.vue';
+import AppArticleDetails from '@/components/article/ArticleDetails.vue';
 
 const routes=[
     {path:'/users/register',component:AppRegister},
@@ -15,9 +17,11 @@ const routes=[
    {path:'/articles/all', component:AppArticlesAll},
    {path:'/articles/my-articles',component:AppArticlesMine},
    {path:'/articles/create',component:AppArticleCreate},
+   {path:'/articles/details/:id',name:'articleDetails',component:AppArticleDetails},
+   {path:'/articles/edit/:id',component:AppArticleEdit},
    {path:'/home', component:AppArticlesAll},
   { path:'/', component:AppStart},
-  {path:'**',component:AppNotFound}
+  {path:'*',component:AppNotFound}
 ]
 
 Vue.use(VueRouter);

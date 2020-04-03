@@ -26,21 +26,52 @@
 </template>
 
 <script>
+
+import authAxios from '@/axios-auth.js';
 import {validationMixin} from 'vuelidate';
 import {required, email, minLength}from 'vuelidate/lib/validators';
+
+
 export default {
     name:'AppLogin',
     mixins:[validationMixin],
     data(){
         return{
-email:'',
-password:''
+                email:'',
+                password:''
         }
     },
     methods:{
         loginHandler(){
             this.$v.$touch();
-//todo
+            const payload={
+               email: this.email,
+                password: this.password,
+                 returnSecureToken: true
+            };
+            authAxios
+                .post(
+                    '/accounts:signInWithPassword',
+                     payload
+                )
+                .then((res)=>{
+                    console.log(res);
+                     const { idToken, localId, email } = res.data;
+
+                    localStorage.setItem("token", idToken);
+                    localStorage.setItem("userId", localId);
+                    localStorage.setItem("email", email);
+                    console.log(localStorage.getItem('email'));
+                    console.log(localStorage.getItem('token'));
+                   this .$emit('isAuth',true);
+                   this.$emit('email',email);
+                    this.$router.push("/home");
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+                
+
         }
     },
     validations:{

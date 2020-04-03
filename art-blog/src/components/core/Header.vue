@@ -21,10 +21,10 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link black-text" to="/articles/my-articles">My Articles</router-link>
+        <router-link  class="nav-link black-text" to="/articles/my-articles">My Articles</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link black-text" to="/articles/create">Create Article</router-link>
+        <router-link  class="nav-link black-text" to="/articles/create">Create Article</router-link>
       </li>
     </ul>
       
@@ -33,20 +33,21 @@
         
          
          <li class="nav-item" v-if="!isAuthenticated">
-           <router-link to="/users/register" class="nav-link waves-light black-text" mdbWavesEffect>Register</router-link>
+           <router-link  to="/users/register" class="nav-link waves-light black-text" mdbWavesEffect>Register</router-link>
          </li>
          <li class="nav-item" v-if="!isAuthenticated">
-           <router-link  to="/users/login" class="nav-link waves-light black-text" mdbWavesEffect>Login</router-link>
+           <router-link   to="/users/login" class="nav-link waves-light black-text" mdbWavesEffect>Login</router-link>
          </li>
             <li class="nav-item"  v-if="isAuthenticated">
-               <p class="nav-link waves-light black-text"  >Welcome, MMMMM </p>
+               <p class="nav-link waves-light black-text"  >Welcome, {{email}} </p>
             </li>
             <li class="nav-item"  v-if="isAuthenticated">
-           <router-link to="/" class="nav-link waves-light black-text" mdbWavesEffect>Logout</router-link>
+           <a   class="nav-link waves-light black-text" mdbWavesEffect v-on:click="logout">Logout</a>
             </li>
          
          
     </ul>
+    
   </div>
 </nav>
 
@@ -56,13 +57,19 @@
 <script>
 export default {
 name:'AppHeader',
-data(){
-    return {
-        isAuthenticated:true
-    }
-
-},
+props:{
+  isAuthenticated: Boolean,
+  email:String
+  
+}
+,
 methods:{
+  logout(){
+    localStorage.clear('token');
+    localStorage.clear('userId');
+    this.$emit('onAuth',false)
+    this.$router.push('/');
+  }
 },
 computed:{
   
