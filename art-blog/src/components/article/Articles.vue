@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div id="all-articles" class="row" v-if="articles">
+  <div id="all-articles" class="row" v-if="articles.length>0">
   
       <div id="article" class="col-lg-4 col-md-12 mb-lg-0 mb-4" v-for="article in articles" v-bind:key="article.id">
     
@@ -27,8 +27,9 @@
      mdbWavesEffect v-bind:to="{name:'articleDetails', params:{id:article.id}}">Read more</router-link>
       </div>      
     </div>
-    <div v-else>
+    <div v-if="articles.length===0">
           <h4>There are no articles yet.</h4>
+        
     </div>
 </div>
 </template>
