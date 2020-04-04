@@ -1,7 +1,7 @@
 <template>
   <div id="app"  >
    <app-header v-on:onAuth="isAuthenticated=$event" v-bind:isAuthenticated="isAuthenticated" v-bind:email="email"></app-header>
-  <router-view   v-on:onAuth="isAuthenticated=$event" v-bind:isAuthenticated="isAuthenticated"  ></router-view>
+  <router-view   v-on:onAuth="isAuthenticated=$event" v-bind:isAuthenticated="isAuthenticated"  v-bind:email="email"></router-view>
    <app-footer></app-footer>
   </div>
 </template>
@@ -19,29 +19,11 @@ export default {
        
      }  
    },
-
   components: {
     AppHeader,
     AppFooter
     
-  },
-  
- 
-methods:{
-  addArticle(article){
-    //todo and replace
-    this.articles.push(article);
-  }
-  },
-  computed:{     
-    
-    selectedArticle(id){
-return this.articles.filter(a=>a.id===id);
-    }
-
-  }
-  
-  
+  }  
 }
 
 </script>
@@ -52,6 +34,10 @@ return this.articles.filter(a=>a.id===id);
 }
 form{
     background-color:white;
+}
+h1{
+
+  text-align: center;
 }
 
 </style>

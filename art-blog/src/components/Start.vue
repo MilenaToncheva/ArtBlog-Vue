@@ -24,7 +24,9 @@ data(){
 
    }
   },
- 
+  beforeCreate() {
+    this.$emit('onAuth', localStorage.getItem('token') !== null);
+  },
   }
 
 

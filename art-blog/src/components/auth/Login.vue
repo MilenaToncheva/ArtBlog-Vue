@@ -63,8 +63,7 @@ export default {
                     localStorage.setItem("email", email);
                     console.log(localStorage.getItem('email'));
                     console.log(localStorage.getItem('token'));
-                   this .$emit('isAuth',true);
-                   this.$emit('email',email);
+                   
                     this.$router.push("/home");
                 })
                 .catch(err => {
