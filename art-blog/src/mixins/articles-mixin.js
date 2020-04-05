@@ -5,7 +5,7 @@ export default {
     data: function() {
         return { 
             articles: [],
-            selectedArticle:Object,
+            article:Object,
             message:''
          }
     },
@@ -40,13 +40,12 @@ export default {
                 console.log(err);
             }
         },
-      async  getArticle (id){
-            //to check and ammend
+        getArticle (id){
             axiosDb.get(`articles/${id}.json`)
             .then((res)=>{
-                console.log(res)
-                this.selectedArticle=res.data;
-                console.log(this.selectedArticle)
+               // console.log(res)
+                this.article=res.data;
+                console.log(this.article)
             })
             .catch((err)=>{
                 this.message=err.message;
@@ -57,8 +56,8 @@ export default {
         createArticle(data){
             console.log(data);
             axiosDb
-                .post(`articles.json`,data).then((res)=>{
-                                console.log(res);
+                .post(`articles.json`,data).then(()=>{
+                             
                                 this.$router.push('/home');
                             }).catch((err)=>{
                                  console.log(err)
@@ -66,7 +65,7 @@ export default {
     
         },
         deleteArticle(id){
-        axiosDb.delete(`articles.json`,id)
+        axiosDb.delete(`articles/${id}.json`)
         .then(()=>{
             //to think where to view the message
             this.message='Article successfully deleted!'
@@ -75,10 +74,11 @@ export default {
             this.message=err.message;
             })
         },
-        editArticle(data){
+        editArticle(id,data){
+          //  console.log(data);
             axiosDb
-            .put(`articles.json`,data).then((res)=>{
-                            console.log(res);
+            .put(`articles/${id}.json`,data).then(()=>{
+                           
                             this.$router.push('/home');
                         }).catch((err)=>{
                              console.log(err)

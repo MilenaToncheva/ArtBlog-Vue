@@ -1,4 +1,5 @@
 <template>
+<div>
 <form  class="text-center col-md-4 offset-4 border border-light p-5" v-on:submit.prevent="loginHandler">
     <p class="h4 mb-4">Login</p>
     <div class="form-group">
@@ -23,6 +24,8 @@
       <router-link to="/users/register">Register</router-link>
     </p>
    </form>
+   <div ></div>
+   </div>
 </template>
 
 <script>
@@ -62,7 +65,7 @@ export default {
                     localStorage.setItem("userId", localId);
                     localStorage.setItem("email", email);
                    // console.log(localStorage.getItem('email'));
-                    console.log(localStorage.getItem('token'));
+                    //console.log(localStorage.getItem('token'));
                    
                     this.$router.push("/home");
                 })

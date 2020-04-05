@@ -1,14 +1,14 @@
-<template>
+ <template>
  
   <div>
 <h1>Edit Article</h1>
-<form  v-on:submit.prevent="articleEditHandler">
+<form  v-on:submit.prevent="editArticle(id,article)">
     
     <div class="form-group row">
       <!-- Title -->
       <label for="inputTitle" class="col-sm-1 offset-sm-3 col-form-label">Title</label>
       <div class="col-sm-4">
-        <input v-model="article.title" mdbInput type="text"  name="title" class="form-control" id="inputTitle" 
+        <input v-model="article.title" value="article.title" mdbInput type="text"  name="title" class="form-control" id="inputTitle" 
      v-on:blur="$v.article.title.$touch()">
       </div>
       <template v-if="$v.article.title.$error">
@@ -22,7 +22,7 @@
         <label for="inputImageUrl" class="col-sm-1 offset-sm-3 col-form-label">Image URL</label>
         <div class="col-sm-4">
           <input v-model="article.imageUrl" name="imageUrl"  mdbInput type="text" class="form-control" id="inputImageUrl" 
-          placeholder="Image URL" v-on:blur="$v.imageUrl.$touch()">
+          placeholder="Image URL" v-on:blur="$v.article.imageUrl.$touch()">
           <template v-if="$v.article.imageUrl.$error">
           <p class="err" v-if="!$v.article.imageUrl.required" >Please enter an image URL</p>
           </template>
@@ -79,25 +79,49 @@
 </template>
 
 <script>
+import ArticlesMixin from '@/mixins/articles-mixin.js';
+import {validationMixin} from 'vuelidate';
+import {required, email, minLength} from 'vuelidate/lib/validators';
 export default {
 name:'AppArticleEdit',
-props:{
-article:Object,
-
-selectedArticle:{
-        type:Object,
-        required:true
-    }
+mixins:[ArticlesMixin,validationMixin],
+data(){
+  return{
+    id:''
+  }
 },
+
 created(){
-    this.article=this.selectedArticle;
+ this.id=this.$route.params.id;
+ 
+  this.getArticle(this.id);
+   console.log(this.article);
+},
+validations:{
+ article:{
+        title:{
+        required,
+        minlength: minLength(6)
+        },
+    imageUrl:{
+        required
+        },
+    content:{
+        required,
+        minlength:minLength(20)
+        },
+    authorName:{
+        required
+        },
+    authorEmail:{
+        required,
+        email
+        }
+}
 },
 
 methods:{
-articleEditHandler(){
-  this.$emit('editedArticle',this.article);
-  this.$router.push('/articles/my-articles');
-}
+
 }
 }
 </script>

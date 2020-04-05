@@ -33,7 +33,7 @@ const routes=[
             path:'details/:id', name:'articleDetails',component:()=>import('@/components/article/ArticleDetails.vue')
         },
         {
-            path:'edit/:id',component:()=>import('@/components/article/ArticleEdit.vue')
+            path:'edit/:id',name:'articleEdit',component:()=>import('@/components/article/ArticleEdit.vue')
         }
     ]},
     {
