@@ -68,7 +68,7 @@ h4{
     text-align: center;
 }
 #article{
-    margin: 30px;
+    margin-bottom:50px;
     text-align: center;
 }
 

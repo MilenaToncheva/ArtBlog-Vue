@@ -4,8 +4,8 @@ export default {
     name:'AriclesMixin',
     data: function() {
         return { 
-            articles: []
-        
+            articles: [],
+            selectedArticle:Object
          }
     },
     methods: {
@@ -39,6 +39,10 @@ export default {
                 console.log(err);
             }
         },
+selectArticle (){
+    this.selectArticle=this.articles.filter(a=>a.id===this.$router.params.id)
+    
 
+}
         }
     }

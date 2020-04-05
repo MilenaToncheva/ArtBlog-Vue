@@ -1,27 +1,44 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import AppRegister from '@/components/auth/Register.vue';
-import AppLogin from '@/components/auth/Login.vue';
-import AppArticlesAll from '@/components/article/ArticlesAll.vue'; 
-import AppArticlesMine from '@/components/article/ArticlesMine.vue';
-import AppArticleCreate from '@/components/article/ArticleCreate.vue';
 import AppStart from '@/components/Start.vue';
-import AppNotFound from '@/components/NotFound.vue';
-import AppArticleEdit from '@/components/article/ArticleEdit.vue';
-import AppArticleDetails from '@/components/article/ArticleDetails.vue';
-
+import AppArticlesInit from '@/components/article/ArticlesInit.vue';
+import AppAuth from '@/components/auth/Auth.vue';
 const routes=[
-    {path:'/users/register',component:AppRegister},
-    {path:'/users/login', component:AppLogin},
-   {path:'/articles/all', component:AppArticlesAll},
-   {path:'/articles/my-articles',component:AppArticlesMine},
-   {path:'/articles/create',component:AppArticleCreate},
-   {path:'/articles/details/:id',name:'articleDetails',component:AppArticleDetails},
-   {path:'/articles/edit/:id',component:AppArticleEdit},
-   {path:'/home', component:AppArticlesAll},
-  { path:'/', component:AppStart},
-  {path:'*',component:AppNotFound}
+    {
+        path:'/', component:AppStart
+    },
+    {
+        path:'/home', component:()=>import('@/components/article/ArticlesAll.vue')
+    },
+    {path:'/users', component:AppAuth, children:[
+        {
+            path:'register', component:()=>import('@/components/auth/Register.vue')
+        },
+        {
+    path:'login', component:()=>import('@/components/auth/Login.vue')
+        }
+    ]},
+    {path:'/articles', component:AppArticlesInit, children:[
+        {
+            path:'all',component:()=>import('@/components/article/ArticlesAll.vue')
+        },
+        {
+            path:'my-articles',component:()=>import('@/components/article/ArticlesMine.vue')
+        },
+        {
+            path:'create',component:()=>import('@/components/article/ArticleCreate.vue')
+        },
+        {
+            path:'details/:id', name:'articleDetails',component:()=>import('@/components/article/ArticleDetails.vue')
+        },
+        {
+            path:'edit/:id',component:()=>import('@/components/article/ArticleEdit.vue')
+        }
+    ]},
+    {
+        path:'*', component:()=>import('@/components/NotFound.vue')
+    }  
 ]
 
 Vue.use(VueRouter);

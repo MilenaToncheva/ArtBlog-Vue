@@ -21,7 +21,7 @@
         <p>by <a class="font-weight-bold">{{selectedArticle.authorName}}</a></p>
         <p class="dark-grey-text">{{selectedArticle.content}}</p>
     <!--Buttons -->
-        <div class="form-row mb-12" v-If="selectedArticle|canEditAndDelete">
+        <div class="form-row mb-12" v-if="selectedArticle.authorEmail===currentUserEmail">
           <div class="col btns">
             <router-link   v-bind:to="{name:'articleEdit', params:{id:selectedArticle.id}}" class="col-sd-6 form-control"   mdbBtn color="info">
               Edit</router-link>
@@ -41,29 +41,26 @@
 </template>
 
 <script>
+import ArticlesMixin from '@/mixins/articles-mixin.js'; 
 export default {
 name:'AppArticleDetails',
-props:{
-    
-    articles:Array
+data(){
+  return {
+ currentUserEmail:localStorage.getItem('email')
+  }
 },
 created(){
-    
-   this.selectedArticle; 
+this.selectArticle();
+console.log(this.selectedArticle);
+},
+mixins:[ArticlesMixin]
     
    
 
-},
-methods:{
-    deleteArticle(){
-        //todo
-        },
-    },
-    computed:{
-        selectedArticle(){
-          return  this.articles.filter(a=>a.id===this.$route.params.id)[0];
-        }
-    }
+
+
+    
+    
 }
 </script>
 
