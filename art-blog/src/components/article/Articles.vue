@@ -2,7 +2,7 @@
 <div>
   <div id="all-articles" class="row" v-if="articles.length>0">
   
-      <div id="article" class="col-lg-4 col-md-12 mb-lg-0 mb-4" v-for="article in articles" v-bind:key="article.id">
+      <div id="article" class="col-lg-4 col-md-12 mb-lg-0 mb-4" v-for="article in articles" v-bind:key="article.articleId">
     
         <!-- Image URL -->
         <div id="articleImg" class="view overlay rounded z-depth-2 mb-4 waves-light" mdbWavesEffect>
@@ -23,8 +23,9 @@
         <!-- Content -->
     <p class="dark-grey-text">{{article.content|shorten}}</p>
         <!-- Read more button -->
+        
     <router-link  mdbBtn color="pink" rounded="true"
-     mdbWavesEffect v-bind:to="{name:'articleDetails', params:{id:article.id}}">Read more</router-link>
+     mdbWavesEffect v-bind:to="{name:'articleDetails', params:{id:article.articleId}}">Read more</router-link>
       </div>      
     </div>
     <div v-if="articles.length===0">

@@ -79,14 +79,15 @@
 
 <script>
 import{validationMixin} from 'vuelidate';
+import ArticlesMixin from '@/mixins/articles-mixin.js';
 import{required, minLength,email} from 'vuelidate/lib/validators';
 export default {
 name:'AppArticleCreate',
-mixins:[validationMixin],
+mixins:[validationMixin, ArticlesMixin],
 data(){
     return {
         article:{
-            id:null,
+            
         title:'',
         imageUrl:'',
         content:'',
@@ -97,13 +98,16 @@ data(){
 },
 methods:{
     articleCreateHandler(){
-        this.$v.$touch();
-        if(this.article.title===''){
-            return;
-        }
-        this.$emit('addArticle',this.article);
-        
-        this.$router.push('/home');
+       this.$v.$touch();
+      
+      
+       this.createArticle(this.article);
+        this.title='';
+        this.imageUrl='';
+        this.content='';
+        this.authorName='';
+        this.authorEmail='';
+      
         }
     },
 

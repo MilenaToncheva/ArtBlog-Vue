@@ -61,7 +61,7 @@ export default {
                     localStorage.setItem("token", idToken);
                     localStorage.setItem("userId", localId);
                     localStorage.setItem("email", email);
-                    console.log(localStorage.getItem('email'));
+                   // console.log(localStorage.getItem('email'));
                     console.log(localStorage.getItem('token'));
                    
                     this.$router.push("/home");

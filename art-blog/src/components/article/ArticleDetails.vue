@@ -7,7 +7,7 @@
     <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 offset-4" >
     <!-- Article Image -->
       <div class="view overlay rounded z-depth-2 mb-4 waves-light" mdbWavesEffect>
-        <img class="img-fluid" v-bind:src="selectedArticle.imageUrl" alt="Article Image">
+        <img class="img-fluid" v-bind:src="this.selectedArticle.imageUrl" alt="Article Image">
         <a>
           <div class="mask rgba-white-slight"></div>
         </a>
@@ -23,12 +23,13 @@
     <!--Buttons -->
         <div class="form-row mb-12" v-if="selectedArticle.authorEmail===currentUserEmail">
           <div class="col btns">
-            <router-link   v-bind:to="{name:'articleEdit', params:{id:selectedArticle.id}}" class="col-sd-6 form-control"   mdbBtn color="info">
+            <router-link   v-bind:to="{name:'articleEdit', params:{id:id}}" class="btn btn-info btn-block my-4"  mdbBtn color="info">
               Edit</router-link>
-          </div>
+          </div> 
           
           <div class="col btns">
-            <button  class="col-sd-6 form-control "  type="submit" mdbBtn color="info" v-on:click="deleteArticle()">Delete</button>
+            <button   class="btn btn-info btn-block my-4" type="submit" mdbBtn color="info" v-on:click="deleteArticle(id)">Delete</button>
+          
           </div>
         </div>
 
@@ -41,29 +42,32 @@
 </template>
 
 <script>
+
 import ArticlesMixin from '@/mixins/articles-mixin.js'; 
 export default {
 name:'AppArticleDetails',
+mixins:[ArticlesMixin],
 data(){
+  
   return {
- currentUserEmail:localStorage.getItem('email')
-  }
-},
-created(){
-this.selectArticle();
-console.log(this.selectedArticle);
-},
-mixins:[ArticlesMixin]
-    
    
+   id:'',
+      currentUserEmail:localStorage.getItem('email')
+  }},
 
-
-
-    
+created(){
+   
+      this.id=this.$route.params.id;
+      
+    this.getArticle(this.id);
+  
+}   
     
 }
 </script>
 
-<style>
-
+<style scoped>
+h6,h4,p{
+  text-align: center;
+}
 </style>

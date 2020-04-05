@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const instance=axios.create({
     baseURL: 'https://artblog-fa98d.firebaseio.com/',
-    headers: { 'COntent-Type' :'application/json'}
+    headers: { 'Content-Type' :'application/json'}
 });
 
 instance.interceptors.request.use((config)=>{

@@ -15,7 +15,8 @@ export default {
 name:'AppArticlesAll',
 data(){
   return{
-    myArticles:false
+    myArticles:false,
+    
   }
 },
 components:{
