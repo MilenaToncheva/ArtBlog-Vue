@@ -1,5 +1,5 @@
 <template>
-<div class="text-center background-image" v-bind:style="image" >
+<div id="start" class="text-center background-image" v-bind:style="image" >
      <!--HEADING-->
     <h1 class="h1 py-5 font-weight-bold">Welcome to MT ArtBlog</h1>
     <!--DESCRIPTION-->
@@ -18,11 +18,11 @@ export default {
 name:'AppStart',
 data(){
   return{
-   image:{
-      backgroundImage:"url(https://images.pexels.com/photos/3057821/pexels-photo-3057821.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)",
-      }
 
    }
+  },
+  props:{
+    image:Object
   },
   beforeCreate() {
     this.$emit('onAuth', localStorage.getItem('token') !== null);
@@ -33,10 +33,10 @@ data(){
 </script>
 
 <style scoped>
-#startView{
-  height: 600px;
-filter: brightness(1.14) ; }
+
 .background-image{
-  height: 640px
+  margin-top:60px;
+  height: 645px;
+  filter: brightness(1.14) 
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
-<div>
+<div  >
+    <div class="background-image" v-bind:style="image">
 <form  class="text-center col-md-4 offset-4 border border-light p-5" v-on:submit.prevent="loginHandler">
     <p class="h4 mb-4">Login</p>
     <div class="form-group">
@@ -24,8 +25,10 @@
       <router-link to="/users/register">Register</router-link>
     </p>
    </form>
-   <div ></div>
+    </div>
    </div>
+   
+
 </template>
 
 <script>
@@ -43,6 +46,9 @@ export default {
                 email:'',
                 password:''
         }
+    },
+    props:{
+        image:Object
     },
     methods:{
         loginHandler(){
@@ -90,8 +96,10 @@ export default {
 }
 </script>
 
-<style>
-form{
-    background-color:white;
+<style scoped>
+
+.background-image{
+    padding-top: 30px;
 }
+
 </style>

@@ -1,10 +1,13 @@
 <template>
-  <router-view></router-view>
+  <router-view v-bind:image="image"></router-view>
 </template>
 
 <script>
 export default {
-name:'AppAuth'
+name:'AppAuth',
+props:{
+    image:Object
+}
 }
 </script>
 

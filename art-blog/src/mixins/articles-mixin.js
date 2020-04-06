@@ -27,7 +27,9 @@ export default {
         async getMyArticles() {
             try {
                 const res = await axiosDb.get(`articles.json`);
-               const allArticlesRes = res.data.filter(a=>a.authorEmail===localStorage.getItem('email'));
+               
+                console.log(res.data);
+               const allArticlesRes = res.data;
                // console.log(allArticlesRes);
                for (const articleId in allArticlesRes) {
                 this.articles.push({
@@ -35,7 +37,7 @@ export default {
                   ...   allArticlesRes[articleId]
                 });
               }
-                
+                this.articles=this.articles.filter(a=>a.authorEmail===localStorage.getItem('email'));
             } catch(err) {
                 console.log(err);
             }

@@ -1,4 +1,5 @@
 <template>
+<div class="background-image" v-bind:style="image">
   <form class="text-center col-md-4 offset-4 border border-light p-5"  v-on:submit.prevent="registerHandler">
     <p class="h4 mb-4">Register</p>
 <!-- EMAIL -->
@@ -33,6 +34,7 @@
         Already Registered? <router-link to="/users/login">Login</router-link>.
     </p>
 </form>
+</div>
 </template>
 
 
@@ -51,6 +53,9 @@ data(){
         password:'',
         rePassword:''
     }
+},
+props:{
+    image:Object
 },
 methods:{
     registerHandler(){
@@ -92,9 +97,9 @@ validations:{
 }
 </script>
 
-<style>
-form{
-    background-color:white;
-    
+<style scoped>
+
+.background-image{
+    padding-top: 30px;
 }
 </style>

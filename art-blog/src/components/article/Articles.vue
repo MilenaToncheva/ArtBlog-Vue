@@ -47,12 +47,13 @@ mixins:[ArticlesMixin]
 ,
 created(){
      if(this.myArticles){
-    this.getMyArticles()
+        this.getMyArticles()
+        console.log(this.articles);
        }
        else{
-           this.getAllArticles();
+        this.getAllArticles();
        }
-    
+    console.log(this.myArticles);
 } 
 }
 </script>
