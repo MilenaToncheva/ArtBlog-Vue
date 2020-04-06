@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrap d-flex flex-row align-items-center">
+  <div id="notFound" class="page-wrap d-flex flex-row align-items-center">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 text-center">
@@ -19,6 +19,8 @@ name:'AppNotFound'
 }
 </script>
 
-<style>
-
+<style scoped>
+#notFound{
+    padding-top:150px
+}
 </style>

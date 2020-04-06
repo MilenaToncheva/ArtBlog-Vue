@@ -4,38 +4,68 @@ import VueRouter from 'vue-router';
 import AppStart from '@/components/Start.vue';
 import AppArticlesInit from '@/components/article/ArticlesInit.vue';
 import AppAuth from '@/components/auth/Auth.vue';
+
+function authGuard(to,from,next){
+    console.log(localStorage.getItem('token'));
+    if(localStorage.getItem('token')===null){
+        next('/users/login');
+    }else{
+        next();
+    }
+}
+function anonymousGuard(to,from,next){
+    if(localStorage.getItem('token')!==null){
+        next('/home');
+    }else{
+        next();
+    }
+}
+
+
 const routes=[
     {
-        path:'/', component:AppStart
+        path:'/', component:AppStart,
+        beforeEnter:anonymousGuard
+        
     },
     {
-        path:'/home', component:()=>import('@/components/article/ArticlesAll.vue')
-    },
+        path:'/home', component:()=>import('@/components/article/ArticlesAll.vue'),
+        beforeEnter:authGuard
+       },
     {path:'/users', component:AppAuth, children:[
         {
-            path:'register', component:()=>import('@/components/auth/Register.vue')
+            path:'register', component:()=>import('@/components/auth/Register.vue'),
+            beforeEnter: anonymousGuard
         },
         {
-    path:'login', component:()=>import('@/components/auth/Login.vue')
+            path:'login', component:()=>import('@/components/auth/Login.vue'),
+            beforeEnter: anonymousGuard
+            
         }
     ]},
-    {path:'/articles', component:AppArticlesInit, children:[
+    {path:'/articles',  component:AppArticlesInit, children:[
         {
-            path:'all',component:()=>import('@/components/article/ArticlesAll.vue')
+            path:'all',component:()=>import('@/components/article/ArticlesAll.vue'),
+            beforeEnter: authGuard
         },
         {
-            path:'my-articles',component:()=>import('@/components/article/ArticlesMine.vue')
+            path:'my-articles',component:()=>import('@/components/article/ArticlesMine.vue'),
+            beforeEnter: authGuard
         },
         {
-            path:'create',component:()=>import('@/components/article/ArticleCreate.vue')
+            path:'create',component:()=>import('@/components/article/ArticleCreate.vue'),
+            beforeEnter: authGuard
         },
         {
-            path:'details/:id', name:'articleDetails',component:()=>import('@/components/article/ArticleDetails.vue')
+            path:'details/:id', name:'articleDetails',component:()=>import('@/components/article/ArticleDetails.vue'),
+            beforeEnter:authGuard
         },
         {
-            path:'edit/:id',name:'articleEdit',component:()=>import('@/components/article/ArticleEdit.vue')
+            path:'edit/:id',name:'articleEdit',component:()=>import('@/components/article/ArticleEdit.vue'),
+            beforeEnter: authGuard
         }
-    ]},
+        ]
+    },
     {
         path:'*', component:()=>import('@/components/NotFound.vue')
     }  

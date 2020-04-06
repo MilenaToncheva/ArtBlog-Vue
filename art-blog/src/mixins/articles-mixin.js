@@ -28,7 +28,7 @@ export default {
             try {
                 const res = await axiosDb.get(`articles.json`);
                
-                console.log(res.data);
+               // console.log(res.data);
                const allArticlesRes = res.data;
                // console.log(allArticlesRes);
                for (const articleId in allArticlesRes) {
@@ -47,7 +47,7 @@ export default {
             .then((res)=>{
                // console.log(res)
                 this.article=res.data;
-                console.log(this.article)
+               // console.log(this.article)
             })
             .catch((err)=>{
                 this.message=err.message;
