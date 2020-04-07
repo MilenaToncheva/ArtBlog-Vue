@@ -46,6 +46,7 @@
             </li>
          
          
+         
     </ul>
     
   </div>
@@ -55,8 +56,10 @@
 </template>
 
 <script>
+
 export default {
 name:'AppHeader',
+
 data(){
   return{
     
@@ -70,14 +73,14 @@ props:{
 ,
 methods:{
   logout(){
-    localStorage.clear('token');
-    localStorage.clear('userId');
+    
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    this.isAuth=false;
     this.$emit('onAuth',false)
     this.$router.push('/');
   }
-},
-computed:{
-  
+
 }
 }
 </script>

@@ -18,9 +18,6 @@ Vue.filter('shorten',function(value){
   return value.substr(0,10)+"...";
 })
 
-Vue.filter('canEditAndDelete',function(selectedArticle, userEmail){
-  return selectedArticle.userEmail===userEmail;
-})
 
 for(const component in mdbvue){
   Vue.component(component,mdbvue[component]);

@@ -23,7 +23,7 @@ data(){
 
 <style scoped>
 #myArticles{
-    margin:90px 0px 50px 0px;
+    margin:90px 20px 50px 20px;
 }
 h1{
     margin: 90px 0px 20px 0px

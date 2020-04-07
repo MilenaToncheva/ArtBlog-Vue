@@ -11,7 +11,8 @@
     </template>
     </div>
     <div class="form-group">
-    <input v-model="password" name="password"  type="password" id="defaultLoginFormPassword" class=" form-control mb-4" placeholder="Password" v-on:blur="$v.password.$touch()">
+    <input v-model="password" name="password"  type="password" id="defaultLoginFormPassword" 
+    class=" form-control mb-4" placeholder="Password" autocomplete="on" v-on:blur="$v.password.$touch()">
    <template v-if="$v.password.$error">
    <div class="err" v-if="!$v.password.required">Please enter the password!</div>
    <div class="err" v-else-if="!$v.password.minLength">Invalid password!</div>
@@ -64,7 +65,7 @@ export default {
                      payload
                 )
                 .then((res)=>{
-                    console.log(res);
+                   // console.log(res);
                      const { idToken, localId, email } = res.data;
 
                     localStorage.setItem("token", idToken);
@@ -72,7 +73,8 @@ export default {
                     localStorage.setItem("email", email);
                    // console.log(localStorage.getItem('email'));
                     //console.log(localStorage.getItem('token'));
-                   
+                 this.$emit('onAuth',localStorage.getItem('token')!==null)
+                  
                     this.$router.push("/home");
                 })
                 .catch(err => {

@@ -24,9 +24,9 @@ data(){
   props:{
     image:Object
   },
-  beforeCreate() {
-    this.$emit('onAuth', localStorage.getItem('token') !== null);
-  },
+// beforeCreate() {
+//   this.$emit('onAuth', localStorage.getItem('token') !== null);
+// },
   }
 
 

@@ -57,7 +57,7 @@
     <label for="authorEmail" class="col-sm-1 offset-sm-3 col-form-label">Author email</label>
     <div class="col-sm-4">
       <input v-model="article.authorEmail" name="authorEmail"  mdbInput type="text" class="form-control" id="inputAuthorEmail" 
-      placeholder="Author Email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" v-on:blur="$v.article.authorEmail.$touch()">
+      placeholder="Author Email" required  v-on:blur="$v.article.authorEmail.$touch()" disabled>
       <template v-if="$v.article.authorEmail.$error">
       <p class="err" v-if="!$v.article.authorEmail.required">Please enter author's email.</p>
       <p class="err" v-else-if="!$v.article.authorEmail.email" >Invalid Email!</p>

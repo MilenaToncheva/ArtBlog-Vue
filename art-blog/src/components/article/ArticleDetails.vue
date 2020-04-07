@@ -25,7 +25,7 @@
     
 
     <!--Buttons -->
-        <div class="form-row mb-12" v-if="article.authorEmail===currentUserEmail">
+        <div class="form-row mb-12" v-if="article.authorEmail===currentUserEmail"> <!---->
           <div class="col btns">
             <router-link   v-bind:to="{name:'articleEdit', params:{id:id}}" class="btn btn-info btn-block my-4"  mdbBtn color="info">
               Edit</router-link>

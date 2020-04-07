@@ -1,10 +1,12 @@
-<template>
+ <template>
   <div id="app"  >
-   <app-header v-on:onAuth="isAuthenticated=$event" v-bind:isAuthenticated="isAuthenticated" v-bind:email="email"></app-header>
+   <app-header v-on:onAuth="isAuthenticated=$event" v-bind:isAuthenticated="isAuthenticated" v-bind:email="email" > 
+   </app-header>
   <router-view   v-on:onAuth="isAuthenticated=$event" 
   v-bind:isAuthenticated="isAuthenticated" 
    v-bind:email="email"
-   v-bind:image="image"></router-view>
+   v-bind:image="image"
+   ></router-view>
    <app-footer></app-footer>
   </div>
 </template>
@@ -15,6 +17,7 @@ import AppFooter from './components/core/Footer.vue';
 
 export default {
   name: 'App',
+ 
    data:function(){
      return{
        isAuthenticated:localStorage.getItem('token')!==null,

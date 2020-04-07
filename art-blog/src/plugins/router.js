@@ -6,7 +6,6 @@ import AppArticlesInit from '@/components/article/ArticlesInit.vue';
 import AppAuth from '@/components/auth/Auth.vue';
 
 function authGuard(to,from,next){
-    console.log(localStorage.getItem('token'));
     if(localStorage.getItem('token')===null){
         next('/users/login');
     }else{

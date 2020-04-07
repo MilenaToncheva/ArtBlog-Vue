@@ -2,7 +2,7 @@
   
   <div id="allArticles">
     <h1>All articles</h1>
-    <app-articles v-bind:myArticles="myArticles"></app-articles>
+    <app-articles  v-bind:myArticles="myArticles" ></app-articles>
   </div> 
   
 </template>
@@ -18,7 +18,9 @@ data(){
     myArticles:false,
 
   }
+  
 },
+
 components:{
 AppArticles
 }
@@ -28,7 +30,7 @@ AppArticles
 
 <style scoped>
 #allArticles{
-  margin:90px 0px 50px 0px;
+  margin:90px 20px 50px 20px;
   
   
 }

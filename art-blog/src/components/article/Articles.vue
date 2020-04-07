@@ -40,21 +40,23 @@
 import ArticlesMixin from '@/mixins/articles-mixin.js';
 export default {
 name:'AppArticles',
-props:{
-    myArticles:Boolean
-},
-mixins:[ArticlesMixin]
-,
+mixins:[ArticlesMixin],
+props:  {
+
+   myArticles:Boolean,
+    
+  },
 created(){
-     if(this.myArticles){
-        this.getMyArticles()
-        console.log(this.articles);
+ 
+  if(this.myArticles){
+      this.getMyArticles();
+      console.log(this.articles);
+  }else{
+      this.getAllArticles();
        }
-       else{
-        this.getAllArticles();
-       }
-    console.log(this.myArticles);
-} 
+   // console.log(this.myArticles);
+  } 
+
 }
 </script>
 
@@ -70,7 +72,7 @@ h4{
     text-align: center;
 }
 #article{
-    margin-bottom:50px;
+    margin:20px 20px 20px 20px;
     text-align: center;
 }
 
