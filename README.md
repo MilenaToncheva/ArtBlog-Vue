@@ -14,7 +14,7 @@ ArticlesMixin is used as a service layer for the CRUD operations with the articl
 
 ## Main functionalities:
 ### Anonymous users are able to:
-  * view app start page;
+  * view the start page;
   * register;
   * login.
   

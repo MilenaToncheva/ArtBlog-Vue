@@ -1,7 +1,6 @@
 <template>
-
-  <mdb-footer  class="page-footer fixed-bottom font-small rgba(255, 152, 0, 0.3) rgba-orange-light">
-    <div class="footer-copyright text-center py-3 black-text">
+<mdb-footer  class="page-footer fixed-bottom font-small #ffe0b2 orange lighten-4">
+    <div class="footer-copyright text-center  black-text">
       <mdb-container fluid>
         &copy; 2020 Copyright MT
       </mdb-container>
@@ -18,5 +17,7 @@ name:'AppFooter'
 </script>
 
 <style scoped>
-
+mdb-footer{
+  background-color: #ffe0b2 orange lighten-4;
+}
 </style>

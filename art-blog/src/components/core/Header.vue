@@ -1,7 +1,7 @@
 <template>
 <div>
      <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg fixed-top navbar-dark rgba(255, 152, 0, 0.3) rgba-orange-light">
+<nav class="mb-1 navbar navbar-expand-lg fixed-top navbar-dark #ffe0b2 orange lighten-4">
     
   <router-link  v-if="isAuthenticated" class="navbar-brand black-text" to="/home" >ArtBlog</router-link>
    
