@@ -10,12 +10,12 @@ Nested routing and lazy loading are implemented.
 
 
 ## Main functionalities:
-- Anonymous users is able to:
+### Anonymous users are able to:
   * view app start page;
   * register;
   * login.
   
-## Authenticated users is able to:
+### Authenticated users are able to:
   * view home page with all articles;
   * create article;
   * view all articles (home page);
