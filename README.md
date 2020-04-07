@@ -1,5 +1,6 @@
 # ArtBlog-Vue
 ArtBlog is a small application developed as a course-end project for VueJS course at SoftUni.
+The application is intended for artists, people of art, their fans and followers, and anyone interested in the arts.
 
 ## The app uses:
 - VueJS - for front-end;
