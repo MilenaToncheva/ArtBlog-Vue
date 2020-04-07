@@ -1,6 +1,6 @@
 <template>
 <mdb-footer  class="page-footer fixed-bottom font-small #ffe0b2 orange lighten-4">
-    <div class="footer-copyright text-center  black-text">
+    <div class="footer-copyright text-center py-3  black-text">
       <mdb-container fluid>
         &copy; 2020 Copyright MT
       </mdb-container>

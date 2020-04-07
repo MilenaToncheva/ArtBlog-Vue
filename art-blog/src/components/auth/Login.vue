@@ -73,6 +73,7 @@ export default {
                     localStorage.setItem("email", email);
                    // console.log(localStorage.getItem('email'));
                     //console.log(localStorage.getItem('token'));
+                    
                     this.$toast.success('Successfully logged in!','success');
                  this.$emit('onAuth',localStorage.getItem('token')!==null)
                   
