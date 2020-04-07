@@ -5,10 +5,12 @@ The application is intended for artists, people of art, their fans and followers
 ## The app uses:
 - VueJS - for front-end;
 - Firebase - for back-end;
-- Vuelidate -for form validation;
-- Vue-router -for routing. 
-Nested routing and lazy loading are implemented.
-
+- Vuelidate - for form validation;
+- Vue-router - for routing;
+- Vue-toast-notification - for notification.
+Nested routing, guards and lazy loading are implemented.
+A Filter is also used for articles' content manipulation.
+ArticlesMixin is used as a service layer for the CRUD operations with the articles.
 
 ## Main functionalities:
 ### Anonymous users are able to:
@@ -20,7 +22,7 @@ Nested routing and lazy loading are implemented.
   * view home page with all articles;
   * create article;
   * view all articles (home page);
-  * view his own articles;
+  * view their own articles (my articles page);
   * view details of selected article;
-  * able to edit /delete selected own article
+  * edit and delete selected own article
   

@@ -78,6 +78,7 @@ methods:{
     localStorage.removeItem('userId');
     this.isAuth=false;
     this.$emit('onAuth',false)
+    this.$toast.success('Successfully logged out!','success')
     this.$router.push('/');
   }
 

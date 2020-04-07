@@ -72,9 +72,11 @@ methods:{
                 payload
                 )
             .then(()=>{
+                this.$toast.success('Successful registration!','success')
                 this.$router.push('/users/login');
             })
-            .catch(err=>{
+            .catch((err)=>{
+                this.$toast.error(err.message,'warning');
                 console.error(err);
             })
 
