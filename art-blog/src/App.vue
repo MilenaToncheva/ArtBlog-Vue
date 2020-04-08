@@ -15,12 +15,14 @@
 import AppHeader from './components/core/Header.vue';
 import AppFooter from './components/core/Footer.vue';
 
+
 export default {
   name: 'App',
  
    data:function(){
      return{
        isAuthenticated:localStorage.getItem('token')!==null,
+     
        email:localStorage.getItem('email'),
        image:{backgroundImage:
        "url(https://images.pexels.com/photos/3057821/pexels-photo-3057821.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)"
