@@ -8,6 +8,7 @@ The application is intended for artists, people of art, their fans and followers
 - Vuelidate - for form validation;
 - Vue-router - for routing;
 - Vue-toast-notification - for notification.
+## 
 Nested routing, guards and lazy loading are implemented.
 A Filter is also used for articles' content manipulation.
 ArticlesMixin is used as a service layer for the CRUD operations with the articles.
