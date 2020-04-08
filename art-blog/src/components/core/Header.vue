@@ -62,7 +62,7 @@ name:'AppHeader',
 
 data(){
   return{
-    
+   
   }
 },
 props:{
@@ -77,7 +77,7 @@ methods:{
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     this.isAuthenticated=false;
-    
+   
     this.$emit('onAuth',false)
     this.$toast.success('Successfully logged out!','success')
     this.$router.push('/');

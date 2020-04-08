@@ -38,7 +38,6 @@ import authAxios from '@/axios-auth.js';
 import {validationMixin} from 'vuelidate';
 import {required, email, minLength}from 'vuelidate/lib/validators';
 
-
 export default {
     name:'AppLogin',
     mixins:[validationMixin],
@@ -71,6 +70,7 @@ export default {
                     localStorage.setItem("token", idToken);
                     localStorage.setItem("userId", localId);
                     localStorage.setItem("email", email);
+                   
                    // console.log(localStorage.getItem('email'));
                     //console.log(localStorage.getItem('token'));
                     
