@@ -10,7 +10,7 @@ The application is intended for artists, people of art, their fans and followers
 - Vue-toast-notification - for notification.
 Nested routing, guards and lazy loading are implemented.
 A Filter is also used for articles' content manipulation.
-ArticlesMixin is used as a service layer for the CRUD operations with the articles.
+ArticlesMixin and AuthMixin are used as a service layer for the authentication and the CRUD operations with the articles.
 
 ## Main functionalities:
 ### Anonymous users are able to:
@@ -19,10 +19,10 @@ ArticlesMixin is used as a service layer for the CRUD operations with the articl
   * login.
   
 ### Authenticated users are able to:
-  * view home page with all articles;
+  * view home page with all articles listed;
   * create article;
   * view all articles (home page);
   * view their own articles (my articles page);
-  * view details of selected article;
-  * edit and delete selected own article
+  * view details of a selected article;
+  * edit and delete a selected own article.
   

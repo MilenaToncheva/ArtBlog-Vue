@@ -41,12 +41,13 @@
 
 <script>
 
-import authAxios from "@/axios-auth.js";
+
+import AuthMixin from '@/mixins/auth-mixin.js'
 import {validationMixin} from 'vuelidate';
 import {email, sameAs, required, minLength}from 'vuelidate/lib/validators';
 export default {
 name:'AppRegister',
-mixins:[validationMixin],   
+mixins:[validationMixin, AuthMixin],   
 data(){
     return{
         email:'',
@@ -66,20 +67,7 @@ methods:{
             returnSecureToken:true
         };
 
-        authAxios
-            .post(
-                "/accounts:signUp",
-                payload
-                )
-            .then(()=>{
-                this.$toast.success('Successful registration!','success')
-                this.$router.push('/users/login');
-            })
-            .catch((err)=>{
-                this.$toast.error(err.message,'warning');
-                console.error(err);
-            })
-
+       this.registerUser(payload);
     }
 },
 validations:{

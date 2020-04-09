@@ -34,13 +34,14 @@
 
 <script>
 
-import authAxios from '@/axios-auth.js';
+
+import AuthMixin from '@/mixins/auth-mixin.js';
 import {validationMixin} from 'vuelidate';
 import {required, email, minLength}from 'vuelidate/lib/validators';
 
 export default {
     name:'AppLogin',
-    mixins:[validationMixin],
+    mixins:[validationMixin, AuthMixin],
     data(){
         return{
                 email:'',
@@ -58,33 +59,7 @@ export default {
                 password: this.password,
                  returnSecureToken: true
             };
-            authAxios
-                .post(
-                    '/accounts:signInWithPassword',
-                     payload
-                )
-                .then((res)=>{
-                   // console.log(res);
-                     const { idToken, localId, email } = res.data;
-
-                    localStorage.setItem("token", idToken);
-                    localStorage.setItem("userId", localId);
-                    localStorage.setItem("email", email);
-                   
-                   // console.log(localStorage.getItem('email'));
-                    //console.log(localStorage.getItem('token'));
-                    
-                    this.$toast.success('Successfully logged in!','success');
-                 this.$emit('onAuth',localStorage.getItem('token')!==null)
-                  
-                    this.$router.push("/home");
-                })
-                .catch((err) => {
-                     this.$toast.error(err.message,'warning');
-                    console.error(err);
-                });
-                
-
+           this.loginUser(payload);
         }
     },
     validations:{

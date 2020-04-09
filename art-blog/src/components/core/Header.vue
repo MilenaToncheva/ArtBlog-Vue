@@ -56,33 +56,24 @@
 </template>
 
 <script>
-
+import AuthMixin from '@/mixins/auth-mixin.js'
 export default {
 name:'AppHeader',
-
+mixins:[AuthMixin],
 data(){
   return{
-   
+  
   }
 },
 props:{
-  isAuthenticated: Boolean,
+   isAuthenticated: Boolean, 
   email:String
   
-}
-,
+},
 methods:{
   logout(){
-    
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    this.isAuthenticated=false;
-   
-    this.$emit('onAuth',false)
-    this.$toast.success('Successfully logged out!','success')
-    this.$router.push('/');
+    this.logoutUser();
   }
-
 }
 }
 </script>
