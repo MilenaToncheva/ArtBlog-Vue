@@ -62,11 +62,11 @@ name:'AppHeader',
 mixins:[AuthMixin],
 data(){
   return{
-  
+ 
   }
 },
 props:{
-   isAuthenticated: Boolean, 
+  isAuthenticated: Boolean, 
   email:String
   
 },
