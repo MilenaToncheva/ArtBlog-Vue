@@ -139,7 +139,7 @@ validations:{
 <style scoped>
  h1{
 
-    margin-top: 50px;
+    margin-top: 100px;
     text-align: center;
 }
 #wrapper {
